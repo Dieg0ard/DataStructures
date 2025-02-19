@@ -1,5 +1,4 @@
-// Clase que representa un gasto individual
-class Gasto {
+public class Gasto {
     private TipoGasto tipo;
     private double monto;
 
@@ -16,3 +15,4 @@ class Gasto {
         return monto;
     }
 }
+

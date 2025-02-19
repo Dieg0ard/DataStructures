@@ -1,7 +1,4 @@
-// Enumeración para los tipos de gasto
-enum TipoGasto {
-    COMIDA, HOSPEDAJE, TRANSPORTE, ROPA
+public enum TipoGasto {
+    COMIDA, HOSPEDAJE, TRANSPORTE, ROPA;
 }
-
-
 
