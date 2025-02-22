@@ -13,7 +13,7 @@ public class DoublyLinkedList {
 
     // ADD METHODS
 
-    public void add(int value){
+    public void add(int value) {
         addLast(value);
     }
 
@@ -43,14 +43,42 @@ public class DoublyLinkedList {
         this.size++;
     }
 
+    public void addAtIndex(int index, int value) {
+        Node newNode = new Node(value);
+        if (index < 0 || index > this.size) {
+            throw new RuntimeException("Index " + index + " is out of bounds");
+        }
+        if (index == 0) {
+            addFirst(value);
+            return;
+        }
+        if (index == size) {
+            addLast(value);
+            return;
+        }
+        Node temp = first;
+        for (int i = 0; i < index-1; i++) {
+            temp = temp.getNext();
+        }
+        // Enlazamos el nuevo nodo
+        newNode.setNext(temp.getNext());
+        newNode.setPrev(temp);
+
+        // Ajustamos los punteros de los nodos vecinos
+        temp.getNext().setPrev(newNode);
+        temp.setNext(newNode);
+
+        // Aumentamos el tamaño
+        size++;
+    }
 
     // REMOVE METHODS
 
-    public void remove(){
+    public void remove() {
 
     }
 
-    public void removeFirst(){
+    public void removeFirst() {
         if (this.size == 0) {
             throw new RuntimeException("List is empty");
         }
@@ -58,14 +86,14 @@ public class DoublyLinkedList {
             this.first = null;
             this.last = null;
             this.size = 0;
-            } else {
-                this.first = this.first.getNext();
-                this.first.setPrev(null);
-            }
+        } else {
+            this.first = this.first.getNext();
+            this.first.setPrev(null);
+        }
         size--;
     }
 
-    public void removeLast(){
+    public void removeLast() {
         if (this.size == 0) {
             throw new RuntimeException("List is empty");
         }
@@ -73,10 +101,10 @@ public class DoublyLinkedList {
             this.first = null;
             this.last = null;
             this.size = 0;
-            } else {
-                this.last = this.last.getPrev();
-                this.last.setNext(null);
-            }
+        } else {
+            this.last = this.last.getPrev();
+            this.last.setNext(null);
+        }
         size--;
     }
 
@@ -85,8 +113,6 @@ public class DoublyLinkedList {
         last = null;
         size = 0;
     }
-
-   
 
     // GETTERS
 
