@@ -57,18 +57,13 @@ public class DoublyLinkedList {
             return;
         }
         Node temp = first;
-        for (int i = 0; i < index-1; i++) {
+        for (int i = 0; i < index - 1; i++) {
             temp = temp.getNext();
         }
-        // Enlazamos el nuevo nodo
         newNode.setNext(temp.getNext());
         newNode.setPrev(temp);
-
-        // Ajustamos los punteros de los nodos vecinos
         temp.getNext().setPrev(newNode);
         temp.setNext(newNode);
-
-        // Aumentamos el tamaño
         size++;
     }
 
@@ -105,6 +100,30 @@ public class DoublyLinkedList {
             this.last = this.last.getPrev();
             this.last.setNext(null);
         }
+        size--;
+    }
+
+    public void removeAtIndex(int index) {
+        if (index < 0 || index >= this.size) {
+            throw new RuntimeException("Index " + index + " is out of bounds");
+        }
+        if (index == 0) {
+            removeFirst();
+            return;
+        }
+        if (index == size - 1) {
+            removeLast();
+            return;
+        }
+
+        Node temp = first;
+        for (int i = 0; i < index; i++) {
+            temp = temp.getNext();
+        }
+
+        temp.getPrev().setNext(temp.getNext());
+        temp.getNext().setPrev(temp.getPrev());
+
         size--;
     }
 
