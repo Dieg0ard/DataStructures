@@ -1,3 +1,3 @@
-# Trabajos-estructuras-de-datos
+# DataStructures
 
-Trabajos y ejercicios hechos para la matería de estructuras de datos en la UFPS
+Assignments and exercises done for the Data Structures course at UFPS
