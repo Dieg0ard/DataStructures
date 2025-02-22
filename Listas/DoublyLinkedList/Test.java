@@ -5,12 +5,8 @@ public class Test {
         DoublyLinkedList lista = new DoublyLinkedList();
 
         lista.addFirst(15);
-        lista.addFirst(18);
-        lista.addFirst(19);
-        lista.addFirst(1541);
-        lista.addFirst(0);
-        lista.addFirst(-15);
-        lista.addLast(-30);
-        lista.displayReverse();
+        lista.addLast(51);
+        lista.addAtIndex(1, 66);
+        lista.display();
     }
 }
