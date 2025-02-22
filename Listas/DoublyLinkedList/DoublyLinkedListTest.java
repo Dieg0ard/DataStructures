@@ -14,11 +14,12 @@ public class DoublyLinkedListTest {
             System.out.println("3. Agregar en un índice específico");
             System.out.println("4. Eliminar el primer elemento");
             System.out.println("5. Eliminar el último elemento");
-            System.out.println("6. Limpiar la lista");
-            System.out.println("7. Mostrar lista");
-            System.out.println("8. Mostrar lista en orden inverso");
-            System.out.println("9. Obtener tamaño de la lista");
-            System.out.println("10. Verificar si está vacía");
+            System.out.println("6. Eliminar en un índice específico");
+            System.out.println("7. Limpiar la lista");
+            System.out.println("8. Mostrar lista");
+            System.out.println("9. Mostrar lista en orden inverso");
+            System.out.println("10. Obtener tamaño de la lista");
+            System.out.println("11. Verificar si está vacía");
             System.out.println("0. Salir");
             System.out.print("Ingrese su opción: ");
             
@@ -37,11 +38,11 @@ public class DoublyLinkedListTest {
                     break;
                 case 3:
                     System.out.print("Ingrese el índice: ");
-                    int index = scanner.nextInt();
+                    int indexAdd = scanner.nextInt();
                     System.out.print("Ingrese el valor: ");
                     int valIndex = scanner.nextInt();
                     try {
-                        list.addAtIndex(index, valIndex);
+                        list.addAtIndex(indexAdd, valIndex);
                     } catch (Exception e) {
                         System.out.println("Error: " + e.getMessage());
                     }
@@ -63,21 +64,31 @@ public class DoublyLinkedListTest {
                     }
                     break;
                 case 6:
+                    System.out.print("Ingrese el índice a eliminar: ");
+                    int indexRemove = scanner.nextInt();
+                    try {
+                        list.removeAtIndex(indexRemove);
+                        System.out.println("Elemento en el índice " + indexRemove + " eliminado.");
+                    } catch (Exception e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    break;
+                case 7:
                     list.clear();
                     System.out.println("Lista vaciada.");
                     break;
-                case 7:
+                case 8:
                     System.out.println("Lista en orden:");
                     list.display();
                     break;
-                case 8:
+                case 9:
                     System.out.println("Lista en orden inverso:");
                     list.displayReverse();
                     break;
-                case 9:
+                case 10:
                     System.out.println("Tamaño de la lista: " + list.getSize());
                     break;
-                case 10:
+                case 11:
                     System.out.println(list.isEmpty() ? "La lista está vacía." : "La lista no está vacía.");
                     break;
                 case 0:
