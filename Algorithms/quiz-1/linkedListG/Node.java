@@ -1,36 +1,35 @@
 package linkedListG;
 
-
 public class Node<E> {
 
+    // ======= ATRIBUTOS =======
     private E value;
     private Node<E> next;
 
-    Node(){
-
+    // ======= CONSTRUCTORES =======
+    public Node() {
     }
 
-    Node(E value){
+    public Node(E value) {
         this.value = value;
         this.next = null;
     }
 
-    public E getValue(){
+    // ======= MÉTODOS GETTERS =======
+    public E getValue() {
         return this.value;
     }
 
-    public  Node<E> getNext(){
+    public Node<E> getNext() {
         return this.next;
     }
 
-    public void setNext(Node<E> node){
+    // ======= MÉTODOS SETTERS =======
+    public void setNext(Node<E> node) {
         this.next = node;
     }
 
-    public void setValue(E value){
+    public void setValue(E value) {
         this.value = value;
     }
-
-    
-    
 }

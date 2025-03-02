@@ -2,20 +2,21 @@ package linkedListG;
 
 public class LinkedList<E> {
 
+  // ======= ATRIBUTOS =======
   public Node<E> head;
   public Node<E> tail;
   private int size = 0;
 
+  // ======= CONSTRUCTOR =======
   public LinkedList() {
-
   }
 
+  // ======= MÉTODOS PARA AGREGAR ELEMENTOS =======
   public void addBeginning(E value) {
     Node<E> newNode = new Node<E>(value);
     if (this.size == 0) {
       this.head = newNode;
       this.tail = this.head;
-
     } else {
       newNode.setNext(this.head);
       this.head = newNode;
@@ -28,20 +29,19 @@ public class LinkedList<E> {
       this.addBeginning(value);
       return;
     }
-    if (index == this.size - 1) {
+    if (index == this.size) {
       this.addLast(value);
       return;
     }
     Node<E> currentNode = this.head;
     Node<E> newNode = new Node<E>(value);
     int i = 0;
-    // index -1 para que salga antes, cuando el nodo permite hacer la modificacion
     while (currentNode != null && i != index - 1) {
       currentNode = currentNode.getNext();
       i++;
     }
-    newNode.setNext(currentNode.getNext());// le asigna como siguiente el que ocupaba su posicion
-    currentNode.setNext(newNode);// agrega el nuevo nodo en la posicion
+    newNode.setNext(currentNode.getNext());
+    currentNode.setNext(newNode);
     this.size++;
   }
 
@@ -50,89 +50,32 @@ public class LinkedList<E> {
     if (this.size == 0) {
       this.head = newNode;
       this.tail = this.head;
-      this.size++;
     } else {
       this.tail.setNext(newNode);
       this.tail = newNode;
-      this.size++;
     }
+    this.size++;
   }
 
+  // ======= MÉTODO PARA LIMPIAR LA LISTA =======
   public void clear() {
     this.head = null;
     this.tail = null;
     this.size = 0;
   }
 
+  // ======= MÉTODOS PARA VERIFICAR Y OBTENER ELEMENTOS =======
   public boolean contains(E value) {
-    boolean exists = false;
     Node<E> currentNode = this.head;
-    while (currentNode != null && exists == false) {
+    while (currentNode != null) {
       if (currentNode.getValue().equals(value)) {
-        exists = true;
+        return true;
       }
       currentNode = currentNode.getNext();
     }
-    return exists;
+    return false;
   }
 
-  // we use the index like in arrays
-  public void deleteByIndex(int index) {
-    if (index < this.size) {
-      int reference = index - 1;
-      int i = 0;
-      if (index == 0) {
-        this.deleteFirst();
-      } else {
-        if (index == this.size - 1) {
-          this.deleteLast();
-        } else {
-          Node<E> currentNode = this.head;
-          while (i != reference && currentNode != null) {
-            currentNode = currentNode.getNext();
-            i++;
-          }
-          Node<E> temp = currentNode.getNext();
-          currentNode.setNext(currentNode.getNext().getNext());
-          temp.setNext(null);
-          this.size--;
-        }
-      }
-    }
-
-  }
-
-  public void deleteFirst() {
-    if (this.size == 1) {
-      this.head = null;
-      this.tail = null;
-      this.size--;
-    } else {
-      Node<E> temp = this.head;
-      this.head = this.head.getNext();
-      temp.setNext(null);
-      this.size--;
-    }
-
-  }
-
-  public void deleteLast() {
-    if (this.size == 1) {
-      this.head = null;
-      this.tail = null;
-      this.size--;
-    } else {
-      Node<E> currentNode = this.head;
-      while (currentNode.getNext().getNext() != null) {
-        currentNode = currentNode.getNext();
-      }
-      currentNode.setNext(null);
-      this.tail = currentNode;
-      this.size--;
-    }
-  }
-
-  // returns the element at the intex
   public E get(int index) {
     Node<E> currentNode = this.head;
     int i = 0;
@@ -154,23 +97,69 @@ public class LinkedList<E> {
   }
 
   public int indexOf(E value) {
-    boolean exists = false;
     Node<E> currentNode = this.head;
     int i = 0;
-    while (currentNode != null && exists == false) {
+    while (currentNode != null) {
       if (currentNode.getValue().equals(value)) {
-        exists = true;
+        return i;
       }
       currentNode = currentNode.getNext();
       i++;
     }
-    if (exists == true) {
-      return i - 1; // como la variable sale del ciclo luego de validar que existe
+    return -1;
+  }
+
+  // ======= MÉTODOS PARA ELIMINAR ELEMENTOS =======
+  public void deleteByIndex(int index) {
+    if (index >= this.size) return;
+    if (index == 0) {
+      this.deleteFirst();
+    } else if (index == this.size - 1) {
+      this.deleteLast();
     } else {
-      return -1;
+      Node<E> currentNode = this.head;
+      int i = 0;
+      while (i != index - 1) {
+        currentNode = currentNode.getNext();
+        i++;
+      }
+      Node<E> temp = currentNode.getNext();
+      currentNode.setNext(temp.getNext());
+      temp.setNext(null);
+      this.size--;
     }
   }
 
+  public void deleteFirst() {
+    if (this.size == 0) return;
+    if (this.size == 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      Node<E> temp = this.head;
+      this.head = this.head.getNext();
+      temp.setNext(null);
+    }
+    this.size--;
+  }
+
+  public void deleteLast() {
+    if (this.size == 0) return;
+    if (this.size == 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      Node<E> currentNode = this.head;
+      while (currentNode.getNext().getNext() != null) {
+        currentNode = currentNode.getNext();
+      }
+      currentNode.setNext(null);
+      this.tail = currentNode;
+    }
+    this.size--;
+  }
+
+  // ======= MÉTODOS UTILITARIOS =======
   public void printList() {
     Node<E> currentNode = this.head;
     while (currentNode != null) {
@@ -179,17 +168,12 @@ public class LinkedList<E> {
     }
   }
 
-  // public void setHead(E node){
-  //   this.head = (Node)node;
-  // }
-
+  public int getSize() {
+    return this.size;
+  }
 
   public Node<E> getFirstNode() {
     return this.head;
-  }
-
-  public int getSize() {
-    return this.size;
   }
 
   public E nodeGetFirstValue() {

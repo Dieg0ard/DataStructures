@@ -1,6 +1,7 @@
 package Notas;
 
 import linkedListG.*;
+import Algoritmos.InsertionSortListObj;
 
 public class NotasManager {
     // ========================== ATRIBUTOS ========================== 
@@ -38,49 +39,7 @@ public class NotasManager {
 
     // ========================== MÉTODO DE ORDENAMIENTO ========================== 
     public void ordenar() {
-        if (ordenado || NOTAS.getSize() < 2) {
-            return;
-        }
-
-        boolean swapped;
-        do {
-            swapped = false;
-            Node<Nota> prev = null;
-            Node<Nota> current = NOTAS.getFirstNode();
-            Node<Nota> next = current.getNext();
-
-            while (next != null) {
-                if (current.getValue().getNota() > next.getValue().getNota()) {
-                    // Intercambiamos los nodos ajustando punteros
-                    if (prev == null) {
-                        NOTAS.head = next;
-                    } else {
-                        prev.setNext(next);
-                    }
-
-                    current.setNext(next.getNext());
-                    next.setNext(current);
-
-                    // Actualizamos referencias
-                    prev = next;
-                    next = current.getNext();
-                    swapped = true;
-                } else {
-                    prev = current;
-                    current = next;
-                    next = next.getNext();
-                }
-            }
-        } while (swapped);
-
-        // Recorremos la lista para actualizar el tail correctamente
-        Node<Nota> temp = NOTAS.getFirstNode();
-        while (temp.getNext() != null) {
-            temp = temp.getNext();
-        }
-        NOTAS.tail = temp; // El último nodo de la lista debe ser el nuevo tail
-
-        ordenado = true;
+        InsertionSortListObj.insertionSortNota(NOTAS);
     }
 
     // ========================== MÉTODOS DE CONSULTA ========================== 
