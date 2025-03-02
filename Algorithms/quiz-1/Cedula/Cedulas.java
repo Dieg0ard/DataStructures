@@ -3,45 +3,49 @@ package Cedula;
 import Algoritmos.BusquedaBinariaList;
 import Algoritmos.InsertionSortList;
 import linkedListG.*;
-//el primer metodo a llamar debe ser el de ordenar
 
+// La primera operación debe ser ordenar la lista
 public class Cedulas {
-      private LinkedList<Integer> cedulas;
-      
-      Cedulas(){
 
-      }
+    // ======= ATRIBUTO =======
+    private LinkedList<Integer> cedulas;
 
-      Cedulas(LinkedList<Integer> cedulas){
+    // ======= CONSTRUCTORES =======
+    public Cedulas() {
+    }
+
+    public Cedulas(LinkedList<Integer> cedulas) {
         this.cedulas = cedulas;
-      }
+    }
 
-      public void ordenar(){
+    // ======= MÉTODO PARA ORDENAR =======
+    public void ordenar() {
         this.cedulas = InsertionSortList.insertionSort(cedulas);
-      }
-      //para que la busqueda binaria sirva primero ordenar
-      public int existeNumero(){
-        return BusquedaBinariaList.busquedaBinaria(cedulas, 19144473 );
-        }
- 
-      public int numerosMayores(){
+    }
+
+    // ======= MÉTODO PARA BUSCAR UN NÚMERO =======
+    // La lista debe estar ordenada antes de usar este método
+    public int existeNumero() {
+        return BusquedaBinariaList.busquedaBinaria(cedulas, 19144473);
+    }
+
+    // ======= MÉTODO PARA CONTAR CÉDULAS MAYORES A UN VALOR =======
+    public int numerosMayores() {
         int mayores = 0;
-        for(int i = 0; i < cedulas.getSize(); i++){
-           if(cedulas.get(i) > 19145954 ){  //si se garantiza que la cedula 19145954  podriamos restarle a 100 la poscion de donde
-             mayores++;                    //se encuentra +1, pero puede que el elemento no esté, solo dice mayores a él
-           } 
-         }
-        
+        for (int i = 0; i < cedulas.getSize(); i++) {
+            if (cedulas.get(i) > 19145954) {
+                mayores++;
+            }
+        }
         return mayores;
-        
-      }
+    }
 
-      public LinkedList<Integer> getCedulas(){
+    // ======= MÉTODOS GETTERS Y SETTERS =======
+    public LinkedList<Integer> getCedulas() {
         return this.cedulas;
-      }
+    }
 
-      public void setCedulas(LinkedList<Integer> list){
-         this.cedulas = list;
-      }
+    public void setCedulas(LinkedList<Integer> list) {
+        this.cedulas = list;
+    }
 }
-
