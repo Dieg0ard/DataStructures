@@ -1,19 +1,21 @@
-package linkedListG;
+package Stack;
 
-
-public class Node<E> {
-
+public class Node <E>{
     private E value;
-    private Node<E> next;
+    private Node <E> next;
 
-    Node(){
+   public Node(){
 
-    }
+   }
 
-    Node(E value){
-        this.value = value;
-        this.next = null;
-    }
+   public Node(E value){
+    this.value = value;
+   }
+
+   public Node(E value, Node<E> next){
+    this.value = value;
+    this.next = next;
+   }
 
     public E getValue(){
         return this.value;
