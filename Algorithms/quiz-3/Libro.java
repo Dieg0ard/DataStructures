@@ -23,12 +23,11 @@ public class Libro {
         }
         return false;
     }
-    
-     @Override
+
+    @Override
     public int hashCode() {
         return Objects.hash(isbn);
     }
-    
 
     public String getTitulo() {
         return this.titulo;
@@ -53,7 +52,5 @@ public class Libro {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
- 
-   
 
 }

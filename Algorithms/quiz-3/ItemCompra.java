@@ -39,9 +39,8 @@ public class ItemCompra {
         return this.libro;
     }
 
-    public int getValorItem(){
+    public int getValorItem() {
         return libro.getPrecio() * cantidad;
     }
-
 
 }

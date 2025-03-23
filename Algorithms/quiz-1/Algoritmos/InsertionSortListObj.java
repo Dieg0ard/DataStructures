@@ -1,7 +1,7 @@
 package Algoritmos;
 
-import linkedListG.*;
 import Notas.*;
+import linkedListG.*;
 
 // El método getNota() debe estar implementado en el tipo de objeto que vamos a ordenar
 public class InsertionSortListObj {

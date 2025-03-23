@@ -1,11 +1,11 @@
 package Viajero;
 
 public class Comida extends Gastos {
-    public Comida(){
+    public Comida() {
         super();
     }
 
-    public Comida(int valor){
+    public Comida(int valor) {
         super(valor);
     }
 }

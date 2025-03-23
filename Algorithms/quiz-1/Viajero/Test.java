@@ -1,6 +1,7 @@
 package Viajero;
 
 import linkedListG.*;
+
 //el primer metdo a ejecutar es viajero.calculargastos, para que los valores que se 
 //consultan estén en las propiedades
 public class Test {
@@ -26,16 +27,16 @@ public class Test {
         Comida obj18 = new Comida(40);
 
         Gastos[] gastos = {
-            obj1,obj2,obj3,obj4,obj5,obj6,obj7,obj8,obj9,obj10,obj11,obj12,
-            obj13,obj14,obj15,obj16,obj17,obj18
+                obj1, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10, obj11, obj12,
+                obj13, obj14, obj15, obj16, obj17, obj18
         };
 
-        LinkedList<Gastos> gastosL= new LinkedList<Gastos>();
+        LinkedList<Gastos> gastosL = new LinkedList<>();
 
-        for(int i = 0; i < gastos.length; i++){
-            gastosL.addLast(gastos[i]);
-      }
-        
+        for (Gastos gasto : gastos) {
+            gastosL.addLast(gasto);
+        }
+
         Viajero v = new Viajero(gastosL);
 
         v.calcularGastos();
@@ -49,5 +50,5 @@ public class Test {
         System.out.println("Cantidad de gastos en Comida: " + cantidadGastosComida);
         System.out.println(gastoMayor);
     }
-    
+
 }
