@@ -20,6 +20,7 @@ public class DoublyLinkedListTest {
             System.out.println("9. Mostrar lista en orden inverso");
             System.out.println("10. Obtener tamaño de la lista");
             System.out.println("11. Verificar si está vacía");
+            System.out.println("12. Ordenar la lista");
             System.out.println("0. Salir");
             System.out.print("Ingrese su opción: ");
             
@@ -87,6 +88,11 @@ public class DoublyLinkedListTest {
                 }
                 case 10 -> System.out.println("Tamaño de la lista: " + list.getSize());
                 case 11 -> System.out.println(list.isEmpty() ? "La lista está vacía." : "La lista no está vacía.");
+                case 12 -> {
+                    list.sort();
+                    System.out.println("Lista ordenada.");
+                    list.display();
+                }
                 case 0 -> {
                     System.out.println("Saliendo...");
                     scanner.close();
