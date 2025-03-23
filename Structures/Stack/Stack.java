@@ -13,7 +13,7 @@ public class Stack<E> {
   }
 
   public void push(E value) {
-    Node<E> newNode = new Node<E>(value, this.top);
+    Node<E> newNode = new Node<>(value, this.top);
     this.top = newNode;
 
     this.size++;
