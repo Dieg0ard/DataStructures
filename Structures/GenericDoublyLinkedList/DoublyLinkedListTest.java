@@ -20,23 +20,24 @@ public class DoublyLinkedListTest {
             System.out.println("9. Mostrar lista en orden inverso");
             System.out.println("10. Obtener tamaño de la lista");
             System.out.println("11. Verificar si está vacía");
+            System.out.println("12. Ordenar la lista");
             System.out.println("0. Salir");
             System.out.print("Ingrese su opción: ");
             
             int opcion = scanner.nextInt();
             
             switch (opcion) {
-                case 1:
+                case 1 -> {
                     System.out.print("Ingrese el valor a agregar al inicio: ");
                     int valInicio = scanner.nextInt();
                     list.addFirst(valInicio);
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.print("Ingrese el valor a agregar al final: ");
                     int valFinal = scanner.nextInt();
                     list.addLast(valFinal);
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     System.out.print("Ingrese el índice: ");
                     int indexAdd = scanner.nextInt();
                     System.out.print("Ingrese el valor: ");
@@ -46,24 +47,24 @@ public class DoublyLinkedListTest {
                     } catch (Exception e) {
                         System.out.println("Error: " + e.getMessage());
                     }
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     try {
                         list.removeFirst();
                         System.out.println("Primer elemento eliminado.");
                     } catch (Exception e) {
                         System.out.println("Error: " + e.getMessage());
                     }
-                    break;
-                case 5:
+                }
+                case 5 -> {
                     try {
                         list.removeLast();
                         System.out.println("Último elemento eliminado.");
                     } catch (Exception e) {
                         System.out.println("Error: " + e.getMessage());
                     }
-                    break;
-                case 6:
+                }
+                case 6 -> {
                     System.out.print("Ingrese el índice a eliminar: ");
                     int indexRemove = scanner.nextInt();
                     try {
@@ -72,31 +73,32 @@ public class DoublyLinkedListTest {
                     } catch (Exception e) {
                         System.out.println("Error: " + e.getMessage());
                     }
-                    break;
-                case 7:
+                }
+                case 7 -> {
                     list.clear();
                     System.out.println("Lista vaciada.");
-                    break;
-                case 8:
+                }
+                case 8 -> {
                     System.out.println("Lista en orden:");
                     list.display();
-                    break;
-                case 9:
+                }
+                case 9 -> {
                     System.out.println("Lista en orden inverso:");
                     list.displayReverse();
-                    break;
-                case 10:
-                    System.out.println("Tamaño de la lista: " + list.getSize());
-                    break;
-                case 11:
-                    System.out.println(list.isEmpty() ? "La lista está vacía." : "La lista no está vacía.");
-                    break;
-                case 0:
+                }
+                case 10 -> System.out.println("Tamaño de la lista: " + list.getSize());
+                case 11 -> System.out.println(list.isEmpty() ? "La lista está vacía." : "La lista no está vacía.");
+                case 12 -> {
+                    list.sort();
+                    System.out.println("Lista ordenada.");
+                    list.display();
+                }
+                case 0 -> {
                     System.out.println("Saliendo...");
                     scanner.close();
                     return;
-                default:
-                    System.out.println("Opción inválida. Intente de nuevo.");
+                }
+                default -> System.out.println("Opción inválida. Intente de nuevo.");
             }
             
             // Mostrar lista después de cada operación
