@@ -2,7 +2,7 @@ import java.text.DecimalFormat;
 
 public class TestTiendaLibros {
     public static void main(String[] args) {
-         DecimalFormat df = new DecimalFormat("#,###");
+        DecimalFormat df = new DecimalFormat("#,###");
         // Crear instancia de TiendaLibros
         TiendaLibros tienda = new TiendaLibros();
 
@@ -29,14 +29,13 @@ public class TestTiendaLibros {
         tienda.agregarLibro(libro8);
         tienda.agregarLibro(libro9);
 
-
         // Intentar agregar items al carrito solo si el libro existe en el catálogo
         tienda.agregarCarro(2, libro1);
         tienda.agregarCarro(1, libro4);
         tienda.agregarCarro(3, libro6);
         tienda.agregarCarro(2, libro9);
         tienda.agregarCarro(1, libro2);
-        tienda.agregarCarro(1, libro10); //No está en el catalogo, no se añadirá
+        tienda.agregarCarro(1, libro10); // No está en el catalogo, no se añadirá
 
         // Mostrar contenido del carrito antes de retirar
 
@@ -47,7 +46,8 @@ public class TestTiendaLibros {
 
         System.out.println("\n Contenido del carrito antes de retirar:");
         for (ItemCompra item : tienda.getCarro().getItems()) {
-            System.out.println("Libro: " + item.getLibro().getTitulo() + ", Cantidad: " + item.getCantidad() + ", Precio: " + df.format(item.getValorItem()));
+            System.out.println("Libro: " + item.getLibro().getTitulo() + ", Cantidad: " + item.getCantidad()
+                    + ", Precio: " + df.format(item.getValorItem()));
         }
         System.out.println("Valor total en el carrito: " + df.format(tienda.getPrecioTotal()));
 
@@ -59,7 +59,8 @@ public class TestTiendaLibros {
         // Mostrar contenido del carrito después de retirar
         System.out.println("\nContenido del carrito después de retirar:");
         for (ItemCompra item : tienda.getCarro().getItems()) {
-            System.out.println("Libro: " + item.getLibro().getTitulo() + ", Cantidad: " + item.getCantidad()+ ", Precio: " + df.format(item.getValorItem()));
+            System.out.println("Libro: " + item.getLibro().getTitulo() + ", Cantidad: " + item.getCantidad()
+                    + ", Precio: " + df.format(item.getValorItem()));
         }
         System.out.println("Valor total en el carrito: " + df.format(tienda.getPrecioTotal()));
     }

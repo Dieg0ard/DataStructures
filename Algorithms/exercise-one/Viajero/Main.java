@@ -35,4 +35,3 @@ public class Main {
         System.out.println("\nTipo de gasto en el que más invirtió dinero: " + viajero.tipoGastoMasAlto());
     }
 }
-

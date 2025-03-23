@@ -1,12 +1,11 @@
 package Viajero;
 
 public class Ropa extends Gastos {
-    public Ropa(){
+    public Ropa() {
         super();
     }
 
-    public Ropa(int valor){
+    public Ropa(int valor) {
         super(valor);
     }
 }
-

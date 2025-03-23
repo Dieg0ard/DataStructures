@@ -1,6 +1,6 @@
 public class Gasto {
-    private TipoGasto tipo;
-    private double monto;
+    private final TipoGasto tipo;
+    private final double monto;
 
     public Gasto(TipoGasto tipo, double monto) {
         this.tipo = tipo;
@@ -15,4 +15,3 @@ public class Gasto {
         return monto;
     }
 }
-

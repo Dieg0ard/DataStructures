@@ -50,7 +50,7 @@ public class Test {
         queue.printQueue();
 
         // Probar reorderQueue con varios casos
-        Taller.reorderQueue(queue, 5);  // Debería mover el 5 al inicio
+        Taller.reorderQueue(queue, 5); // Debería mover el 5 al inicio
         System.out.println("\nCola después de reorderQueue con 5:");
         queue.printQueue();
 
@@ -62,7 +62,7 @@ public class Test {
         System.out.println("\nCola después de reorderQueue con 15:");
         queue.printQueue();
 
-        Taller.reorderQueue(queue, 3);  // Debería mover el 3 al inicio
+        Taller.reorderQueue(queue, 3); // Debería mover el 3 al inicio
         System.out.println("\nCola después de reorderQueue con 3:");
         queue.printQueue();
     }

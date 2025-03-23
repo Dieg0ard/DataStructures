@@ -1,22 +1,22 @@
 package Notas;
 
-import linkedListG.*;
 import Algoritmos.InsertionSortListObj;
+import linkedListG.*;
 
 public class NotasManager {
-    // ========================== ATRIBUTOS ========================== 
+    // ========================== ATRIBUTOS ==========================
     int aprobados, desaprobados;
     public LinkedList<Nota> NOTAS;
     boolean ordenado;
     int promedio;
 
-    // ========================== CONSTRUCTOR ========================== 
+    // ========================== CONSTRUCTOR ==========================
     public NotasManager() {
         ordenado = false;
         NOTAS = new LinkedList<>(); // Usamos una lista enlazada en lugar de un arreglo
     }
 
-    // ========================== MÉTODOS PÚBLICOS ========================== 
+    // ========================== MÉTODOS PÚBLICOS ==========================
     public void imprimirResumen() {
         ordenar();
         calcularAprobados();
@@ -37,12 +37,12 @@ public class NotasManager {
         System.out.println("Porcentaje de desaprobados: " + (desaprobados * 100) / NOTAS.getSize() + "%");
     }
 
-    // ========================== MÉTODO DE ORDENAMIENTO ========================== 
+    // ========================== MÉTODO DE ORDENAMIENTO ==========================
     public void ordenar() {
         InsertionSortListObj.insertionSortNota(NOTAS);
     }
 
-    // ========================== MÉTODOS DE CONSULTA ========================== 
+    // ========================== MÉTODOS DE CONSULTA ==========================
     public Nota getNotaMasAlta() {
         if (!ordenado) {
             ordenar();
@@ -112,7 +112,7 @@ public class NotasManager {
         return notasSuperiores;
     }
 
-    // ========================== MÉTODOS DE CÁLCULO ========================== 
+    // ========================== MÉTODOS DE CÁLCULO ==========================
     public void calcularAprobados() {
         int notaParaAprobar = 11;
         int indice = 0;
@@ -129,5 +129,5 @@ public class NotasManager {
         desaprobados = indice;
         aprobados = NOTAS.getSize() - indice;
     }
-   
+
 }

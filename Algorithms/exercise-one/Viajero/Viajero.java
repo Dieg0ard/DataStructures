@@ -3,8 +3,8 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public class Viajero {
-    private ArrayList<Gasto> gastos;
-    private EnumMap<TipoGasto, Double> gastosTotales;
+    private final ArrayList<Gasto> gastos;
+    private final EnumMap<TipoGasto, Double> gastosTotales;
 
     public Viajero() {
         this.gastos = new ArrayList<>();
@@ -48,4 +48,3 @@ public class Viajero {
         return maxTipo;
     }
 }
-

@@ -13,7 +13,7 @@ public class LinkedList<E> {
 
   // ======= MÉTODOS PARA AGREGAR ELEMENTOS =======
   public void addBeginning(E value) {
-    Node<E> newNode = new Node<E>(value);
+    Node<E> newNode = new Node<>(value);
     if (this.size == 0) {
       this.head = newNode;
       this.tail = this.head;
@@ -34,7 +34,7 @@ public class LinkedList<E> {
       return;
     }
     Node<E> currentNode = this.head;
-    Node<E> newNode = new Node<E>(value);
+    Node<E> newNode = new Node<>(value);
     int i = 0;
     while (currentNode != null && i != index - 1) {
       currentNode = currentNode.getNext();
@@ -46,7 +46,7 @@ public class LinkedList<E> {
   }
 
   public void addLast(E value) {
-    Node<E> newNode = new Node<E>(value);
+    Node<E> newNode = new Node<>(value);
     if (this.size == 0) {
       this.head = newNode;
       this.tail = this.head;
@@ -111,7 +111,8 @@ public class LinkedList<E> {
 
   // ======= MÉTODOS PARA ELIMINAR ELEMENTOS =======
   public void deleteByIndex(int index) {
-    if (index >= this.size) return;
+    if (index >= this.size)
+      return;
     if (index == 0) {
       this.deleteFirst();
     } else if (index == this.size - 1) {
@@ -131,7 +132,8 @@ public class LinkedList<E> {
   }
 
   public void deleteFirst() {
-    if (this.size == 0) return;
+    if (this.size == 0)
+      return;
     if (this.size == 1) {
       this.head = null;
       this.tail = null;
@@ -144,7 +146,8 @@ public class LinkedList<E> {
   }
 
   public void deleteLast() {
-    if (this.size == 0) return;
+    if (this.size == 0)
+      return;
     if (this.size == 1) {
       this.head = null;
       this.tail = null;

@@ -3,18 +3,17 @@ package Viajero;
 public class Gastos {
     private int valor;
 
-    public Gastos(){
+    public Gastos() {
 
     }
 
-    public Gastos(int valor){
-       this.valor = valor;
+    public Gastos(int valor) {
+        this.valor = valor;
     }
 
-    public int getValor(){
+    public int getValor() {
         return this.valor;
 
     }
 
-   
 }
