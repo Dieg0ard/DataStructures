@@ -238,4 +238,19 @@ public class Abb {
         return node; // valor encontrado
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        toString(raiz, sb);
+        return sb.toString().trim();
+    }
+
+    private void toString(Node node, StringBuilder sb) {
+        if (node != null) {
+            toString(node.getLeft(), sb);
+            sb.append(node.getValue()).append(" ");
+            toString(node.getRight(), sb);
+        }
+    }
+
 }
