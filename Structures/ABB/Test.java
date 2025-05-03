@@ -55,14 +55,14 @@ public class Test {
 
         System.out.println("\n=== Eliminar nodo 70 (con dos hijos) ===");
         tree.remove(70);
-        tree.inorden();
+        System.out.println(tree);
 
         System.out.println("\n=== Eliminar nodo 20 (hoja) ===");
         tree.remove(20);
-        tree.inorden();
+        System.out.println(tree);
 
         System.out.println("\n=== Eliminar nodo 30 (con un hijo) ===");
         tree.remove(30);
-        tree.inorden();
+        System.out.println(tree);
     }
 }
