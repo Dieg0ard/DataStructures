@@ -10,13 +10,16 @@ public class Test {
         arbol.add(5);
         arbol.add(17);
         arbol.add(13);
-        arbol.add(24);
-        
-        System.out.println("El maximo par es: " + arbol.maximoPar(arbol.getRaiz()));
-        System.out.println("Peso del arbol: " + arbol.size(arbol.getRaiz()));
-        // System.out.println("InOrden:");
-        // arbol.inorden(arbol.getRaiz());
-        // System.out.println("PreOrden:");
-        // arbol.preorden(arbol.getRaiz());
+        arbol.add(0);
+        arbol.add(Integer.MIN_VALUE);
+        arbol.add(Integer.MAX_VALUE);
+
+        // System.out.println("El maximo par es: " + arbol.maximoPar(arbol.getRaiz()));
+        // System.out.println("Peso del arbol: " + arbol.size(arbol.getRaiz()));
+        // System.out.println("Mayor: " + arbol.getMax(arbol.getRaiz()));
+        // System.out.println("Menor: " + arbol.getMin(arbol.getRaiz()));
+        System.out.println("Número de hojas: " + arbol.countLeaves(arbol.getRaiz()));
+        System.out.println("Número de nodos internos: " + arbol.countInternalNodes(arbol.getRaiz()));
+
     }
 }
