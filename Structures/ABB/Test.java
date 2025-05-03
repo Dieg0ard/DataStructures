@@ -8,7 +8,7 @@ public class Test {
         arbol.add(3);
         arbol.add(11);
         arbol.add(5);
-        arbol.add(17);
+        arbol.add(7);
         arbol.add(13);
         arbol.add(0);
         arbol.add(Integer.MIN_VALUE);
@@ -18,8 +18,8 @@ public class Test {
         // System.out.println("Peso del arbol: " + arbol.size(arbol.getRaiz()));
         // System.out.println("Mayor: " + arbol.getMax(arbol.getRaiz()));
         // System.out.println("Menor: " + arbol.getMin(arbol.getRaiz()));
-        System.out.println("Número de hojas: " + arbol.countLeaves(arbol.getRaiz()));
-        System.out.println("Número de nodos internos: " + arbol.countInternalNodes(arbol.getRaiz()));
-
+        System.out.println("Número de hojas: " + arbol.countLeaves());
+        System.out.println("Número de nodos internos: " + arbol.countInternalNodes());
+        System.out.println("Contiene el 17: " + arbol.contains(17));
     }
 }
