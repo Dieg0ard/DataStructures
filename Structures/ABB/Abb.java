@@ -168,7 +168,7 @@ public class Abb {
     }
 
     // Verifica si un nodo es hoja (no tiene hijos)
-    private boolean isLeaf(Node node) {
+    public boolean isLeaf(Node node) {
         return node.getLeft() == null && node.getRight() == null;
     }
 
