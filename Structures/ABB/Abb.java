@@ -39,8 +39,8 @@ public class Abb {
 
     }
 
-    public int size(Node node){
-        if(node == null){
+    public int size(Node node) {
+        if (node == null) {
             return 0;
         }
         return 1 + size(node.getLeft()) + size(node.getRight());
@@ -61,5 +61,47 @@ public class Abb {
             maxPar = Math.max(maxPar, maximoPar(node.getRight()));
         }
         return maxPar;
+    }
+
+    public int getMax(Node node) {
+        if (node.getRight() == null) {
+            return node.getValue();
+        }
+        return getMax(node.getRight());
+    }
+
+    public int getMin(Node node) {
+        if (node.getLeft() == null) {
+            return node.getValue();
+        }
+        return getMin(node.getLeft());
+    }
+
+    public boolean isEmpty() {
+        return getRaiz() == null;
+    }
+
+    public boolean isLeaf(Node node) {
+        return node.getLeft() == null && node.getRight() == null;
+    }
+
+    public int countLeaves(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        if (isLeaf(node)) {
+            return 1;
+        }
+        return countLeaves(node.getLeft()) + countLeaves(node.getRight());
+    }
+
+    public int countInternalNodes(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        if (isLeaf(node)) {
+            return 0;
+        }
+        return 1 + countInternalNodes(node.getLeft()) + countInternalNodes(node.getRight());
     }
 }
