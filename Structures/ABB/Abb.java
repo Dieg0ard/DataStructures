@@ -63,6 +63,11 @@ public class Abb {
         return node;
     }
 
+    //Limpia el contenido del arbol
+    public void clear(){
+        raiz = null;
+    }
+
     // Recorrido inorden: izquierda - raíz - derecha (muestra los datos ordenados)
     public void inorden() {
         inorden(raiz);
@@ -167,9 +172,32 @@ public class Abb {
         return getRaiz() == null;
     }
 
+    // Devuelve la altura del arbol
+    public int getHeight() {
+        return getHeight(raiz);
+    }
+
+    private int getHeight(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + Math.max(getHeight(node.getLeft()), getHeight(node.getRight()));
+    }
+
     // Verifica si un nodo es hoja (no tiene hijos)
     public boolean isLeaf(Node node) {
         return node.getLeft() == null && node.getRight() == null;
+    }
+
+    public int treeSumatory() {
+        return treeSumatory(raiz);
+    }
+
+    private int treeSumatory(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return node.getValue() + treeSumatory(node.getLeft()) + treeSumatory(node.getRight());
     }
 
     // Cuenta cuántos nodos hoja hay en el árbol
@@ -185,6 +213,25 @@ public class Abb {
             return 1;
         }
         return countLeaves(node.getLeft()) + countLeaves(node.getRight());
+    }
+
+    public int countSingleChildNodes() {
+        return countSingleChildNodes(raiz);
+    }
+
+    private int countSingleChildNodes(Node node) {
+        if (node == null) {
+            return 0;
+        }
+
+        // Si tiene exactamente un hijo
+        if ((node.getLeft() == null && node.getRight() != null)
+                || (node.getLeft() != null && node.getRight() == null)) {
+            return 1 + countSingleChildNodes(node.getLeft()) + countSingleChildNodes(node.getRight());
+        }
+
+        // Si tiene ambos hijos o ninguno
+        return countSingleChildNodes(node.getLeft()) + countSingleChildNodes(node.getRight());
     }
 
     // Cuenta cuántos nodos internos (no hoja) hay en el árbol
@@ -218,6 +265,27 @@ public class Abb {
             return contains(value, node.getLeft());
         }
         return true;
+    }
+
+    public boolean isSymmetric() {
+        if (raiz == null) {
+            return true;
+        }
+        return isSymmetric(raiz.getLeft(), raiz.getRight());
+    }
+
+    private boolean isSymmetric(Node nodeLeft, Node nodeRight) {
+        if (nodeLeft == null && nodeRight == null) {
+            return true;
+        }
+
+        if (nodeLeft == null || nodeRight == null) {
+            return false;
+        }
+
+        return nodeLeft.getValue() == nodeRight.getValue() &&
+                isSymmetric(nodeLeft.getLeft(), nodeRight.getRight()) &&
+                isSymmetric(nodeLeft.getRight(), nodeRight.getLeft());
     }
 
     // Busca y retorna el nodo con el valor indicado
