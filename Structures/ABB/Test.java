@@ -64,5 +64,8 @@ public class Test {
         System.out.println("\n=== Eliminar nodo 30 (con un hijo) ===");
         tree.remove(30);
         System.out.println(tree);
+
+        System.out.println("\n=== Altura del arbol ===");
+        System.out.println(tree.getHeight());
     }
 }
