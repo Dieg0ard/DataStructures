@@ -1,6 +1,13 @@
 package ABB;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class Abb {
+
     private Node raiz;
 
     // Devuelve la raíz del árbol
@@ -63,8 +70,8 @@ public class Abb {
         return node;
     }
 
-    //Limpia el contenido del arbol
-    public void clear(){
+    // Limpia el contenido del arbol
+    public void clear() {
         raiz = null;
     }
 
@@ -172,18 +179,6 @@ public class Abb {
         return getRaiz() == null;
     }
 
-    // Devuelve la altura del arbol
-    public int getHeight() {
-        return getHeight(raiz);
-    }
-
-    private int getHeight(Node node) {
-        if (node == null) {
-            return 0;
-        }
-        return 1 + Math.max(getHeight(node.getLeft()), getHeight(node.getRight()));
-    }
-
     // Verifica si un nodo es hoja (no tiene hijos)
     public boolean isLeaf(Node node) {
         return node.getLeft() == null && node.getRight() == null;
@@ -283,9 +278,9 @@ public class Abb {
             return false;
         }
 
-        return nodeLeft.getValue() == nodeRight.getValue() &&
-                isSymmetric(nodeLeft.getLeft(), nodeRight.getRight()) &&
-                isSymmetric(nodeLeft.getRight(), nodeRight.getLeft());
+        return nodeLeft.getValue() == nodeRight.getValue()
+                && isSymmetric(nodeLeft.getLeft(), nodeRight.getRight())
+                && isSymmetric(nodeLeft.getRight(), nodeRight.getLeft());
     }
 
     // Busca y retorna el nodo con el valor indicado
@@ -305,6 +300,166 @@ public class Abb {
         }
         return node; // valor encontrado
     }
+
+    public boolean sameStructure(Node other) {
+        return sameStructure(this.getRaiz(), other);
+    }
+
+    private boolean sameStructure(Node left, Node right) {
+        if (left == null && right == null) {
+            return true;
+        }
+        if (left == null ^ right == null) {
+            return false;
+        }
+        return (left.getValue() == right.getValue())
+                && (sameStructure(left.getLeft(), right.getLeft()))
+                && (sameStructure(left.getRight(), right.getRight()));
+    }
+
+    public int summatoryInRange(int min, int max) {
+        return summatoryInRange(min, max, this.getRaiz());
+    }
+
+    private int summatoryInRange(int min, int max, Node node) {
+        if (node == null) {
+            return 0;
+        }
+        if (node.getValue() < min) {
+            return summatoryInRange(min, max, node.getRight());
+        }
+
+        if (node.getValue() > max) {
+            return summatoryInRange(min, max, node.getLeft());
+        }
+
+        return node.getValue() + summatoryInRange(min, max, node.getLeft())
+                + summatoryInRange(min, max, node.getRight());
+    }
+
+    public int countLeavesInRange(int min, int max) {
+        return countLeavesInRange(min, max, this.getRaiz());
+    }
+
+    private int countLeavesInRange(int min, int max, Node node) {
+        if (node == null) {
+            return 0;
+        }
+        if (node.getValue() < min) {
+            return countLeavesInRange(min, max, node.getRight());
+        }
+
+        if (node.getValue() > max) {
+            return countLeavesInRange(min, max, node.getLeft());
+        }
+        if (isLeaf(node)) {
+            return 1;
+        }
+
+        return countLeavesInRange(min, max, node.getLeft()) + countLeavesInRange(min, max, node.getRight());
+    }
+
+    // Devuelve la altura del arbol
+    public int getHeight() {
+        return getHeight(raiz);
+    }
+
+    private int getHeight(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + Math.max(getHeight(node.getLeft()), getHeight(node.getRight()));
+    }
+
+    public List<Integer> toListInOrder() {
+        List<Integer> result = new ArrayList<>();
+        toListInOrder(raiz, result);
+        return result;
+    }
+
+    private void toListInOrder(Node node, List<Integer> result) {
+        if (node != null) {
+            toListInOrder(node.getLeft(), result);
+            result.add(node.getValue());
+            toListInOrder(node.getRight(), result);
+        }
+    }
+
+    public Stack<Integer> toStackInOrder() {
+        Stack<Integer> stack = new Stack<>();
+        toStackInOrder(raiz, stack);
+        return stack;
+    }
+
+    private void toStackInOrder(Node node, Stack<Integer> stack) {
+        if (node != null) {
+            toStackInOrder(node.getRight(), stack); // Importante: primero el derecho
+            stack.push(node.getValue()); // para que el menor quede arriba
+            toStackInOrder(node.getLeft(), stack);
+        }
+    }
+
+    public Queue<Integer> toQueueInOrder() {
+        Queue<Integer> queue = new LinkedList<>();
+        toQueueInOrder(raiz, queue);
+        return queue;
+    }
+
+    private void toQueueInOrder(Node node, Queue<Integer> queue) {
+        if (node != null) {
+            toQueueInOrder(node.getLeft(), queue);
+            queue.add(node.getValue());
+            toQueueInOrder(node.getRight(), queue);
+        }
+    }
+
+    public int depth(int value) {
+    return depth(raiz, value, 0);
+}
+
+private int depth(Node node, int value, int nivel) {
+    if (node == null) {
+        return -1;
+    }
+    if (node.getValue() == value) {
+        return nivel;
+    } else if (value < node.getValue()) {
+        return depth(node.getLeft(), value, nivel + 1);
+    } else {
+        return depth(node.getRight(), value, nivel + 1);
+    }
+}
+
+public List<Integer> pathTo(int value) {
+    List<Integer> path = new ArrayList<>();
+    if (pathTo(raiz, value, path)) {
+        return path;
+    } else {
+        return new ArrayList<>(); // valor no encontrado
+    }
+}
+
+private boolean pathTo(Node node, int value, List<Integer> path) {
+    if (node == null) {
+        return false;
+    }
+
+    path.add(node.getValue());
+
+    if (node.getValue() == value) {
+        return true;
+    }
+
+    if (value < node.getValue()) {
+        if (pathTo(node.getLeft(), value, path)) return true;
+    } else {
+        if (pathTo(node.getRight(), value, path)) return true;
+    }
+
+    path.remove(path.size() - 1); // backtrack si no se encuentra en este camino
+    return false;
+}
+
 
     @Override
     public String toString() {
